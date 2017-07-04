@@ -1,0 +1,10 @@
+<%= title [l(:label_group_plural), groups_path],
+          [@group.name, edit_group_path(@group, :tab => :rules)],
+          @rule.name %>
+
+<%= labelled_form_for [@group, @rule], :html => {:multipart => true} do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <p>
+      <%= submit_tag l(:button_save) %>
+    </p>
+<% end %>

@@ -1,0 +1,12 @@
+en:
+  label_raag_rules: "Rules"
+  label_raag_new_rule: "New rule"
+  label_raag_rule_name: "Name"
+  label_raag_rule_regexp: "Rule"
+  field_rule: "Rule"
+  note_rule_is_regexp: "Note: You can specify regular expression."
+  error_raag_unable_delete_rule: "Unable to delete rule"
+  error_raag_unable_update_rule: "Unable to update rule"
+  errors:
+    messages:
+      error_raag_rule_must_be_regexp: "must be regular expressions."

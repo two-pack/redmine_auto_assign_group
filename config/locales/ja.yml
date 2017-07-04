@@ -1,0 +1,12 @@
+ja:
+  label_raag_rules: "ルール"
+  label_raag_new_rule: "新しいルール"
+  label_raag_rule_name: "名称"
+  label_raag_rule_regexp: "ルール"
+  field_rule: "ルール"
+  note_rule_is_regexp: "正規表現で設定してください。"
+  error_raag_unable_delete_rule: "ルールを削除できませんでした。"
+  error_raag_unable_update_rule: "ルールを編集できませんでした。"
+  errors:
+    messages:
+      error_raag_rule_must_be_regexp: "には正規表現を設定してください。"

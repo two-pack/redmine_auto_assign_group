@@ -1,0 +1,31 @@
+--- 
+assign_rules_001:
+  id: 1
+  group_id: 11
+  name: 'ABC Example'
+  rule: '.+@abc.example.com'
+  position: 1
+assign_rules_002:
+  id: 2
+  group_id: 11
+  name: 'XYZ Corp'
+  rule: '.+@xyz.corp.co.jp'
+  position: 2
+assign_rules_003:
+  id: 3
+  group_id: 11
+  name: 'PQR Inc.'
+  rule: '.+@pqr.net'
+  position: 3
+assign_rules_004:
+  id: 4
+  group_id: 11
+  name: 'For edit test'
+  rule: '.+@for.edit.test.net'
+  position: 4
+assign_rules_005:
+  id: 5
+  group_id: 11
+  name: 'For delete test'
+  rule: '.+@for.delete.test.net'
+  position: 5

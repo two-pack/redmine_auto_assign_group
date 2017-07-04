@@ -1,0 +1,11 @@
+<%= title [l(:label_group_plural), groups_path],
+          [@group.name, edit_group_path(@group, :tab => :rules)],
+          l(:label_raag_new_rule) %>
+
+<%= labelled_form_for [@group, @rule], :html => {:multipart => true} do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+    <p>
+      <%= f.submit l(:button_create) %>
+      <%= f.submit l(:button_create_and_continue), :name => 'continue' %>
+    </p>
+<% end %>
