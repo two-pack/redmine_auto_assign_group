@@ -23,6 +23,7 @@ $ cd plugins
 $ git clone https://github.com/two-pack/redmine_auto_assign_group.git redmine_auto_assign_group
 $ cd ..
 $ bundle install --without test
+$ bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 ```
 Finally restart Redmine.
 
