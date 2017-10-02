@@ -3,11 +3,6 @@ require_dependency 'assign_rule'
 
 module RedmineAutoAssignGroup
   module UserPatch
-    extend ActiveSupport::Concern
-
-    included do
-      unloadable
-    end
 
     def save(*args, &block)
       return super unless new_record?

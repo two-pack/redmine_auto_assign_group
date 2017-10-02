@@ -4,7 +4,7 @@
 
 <p><%= link_to l(:label_raag_new_rule), new_group_assign_rule_path(@group), :class => "icon icon-add" %></p>
 
-<% @rules = get_group_rules(@group) %>
+<% @rules = @group.assign_rules %>
 <% if @rules.any? %>
   <table class="list raag_rules">
     <thead>

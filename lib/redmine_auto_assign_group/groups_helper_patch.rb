@@ -8,10 +8,6 @@ module RedmineAutoAssignGroup
       tabs << {:name => 'rules', :partial => 'groups/rules', :label => :label_raag_rules}
       tabs
     end
-
-    def get_group_rules(group)
-      AssignRule.where(:group_id => group.id).order(:position => :asc)
-    end
   end
 
   Reloader.to_prepare do
