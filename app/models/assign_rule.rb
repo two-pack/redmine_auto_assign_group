@@ -14,8 +14,8 @@ class AssignRule < ActiveRecord::Base
                   'rule',
                   'position'
 
-  def <=>(status)
-    position <=> status.position
+  def <=>(rule)
+    position <=> rule.position
   end
 
   def self.match_groups(user)

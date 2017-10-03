@@ -29,3 +29,15 @@ assign_rules_005:
   name: 'For delete test'
   rule: '.+@for.delete.test.net'
   position: 5
+assign_rules_006:
+  id: 6
+  group_id: 11
+  name: 'somenet.foo'
+  rule: '.+@somenet.foo'
+  position: 6
+assign_rules_007:
+  id: 7
+  group_id: 14
+  name: 'admin@somenet.foo'
+  rule: 'admin@somenet.foo'
+  position: 7
