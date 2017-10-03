@@ -1,3 +1,14 @@
+if (ENV["RAILS_ENV"] = "test") and ENV["COVERAGE"]
+  require "simplecov"
+  SimpleCov.coverage_dir('coverage/redmine_auto_assign_group')
+  SimpleCov.start "rails" do
+    add_filter do |source_file|
+      # report this plugin only.
+      !source_file.filename.include?('plugins/redmine_auto_assign_group') || !source_file.filename.end_with?('.rb')
+    end
+  end
+end
+
 Redmine::Plugin.register :redmine_auto_assign_group do
   name 'Redmine Auto Assign Group Plugin'
   author 'Tatsuya Saito'
