@@ -77,6 +77,21 @@ module RedmineAutoAssignGroup
       assert find('td.rule', text: '.+@a.new-tech.com')
     end
 
+    def test_fail_to_create_new_rule_with_invalid_regexp
+      click_link('B Team')
+      find('a#tab-rules').click
+      click_link('New rule')
+
+      fill_in 'Name', with: 'New Tech Company E'
+      fill_in 'Rule', with: '+'
+      click_button('Create')
+
+      assert find('#errorExplanation ul li', text: 'Rule must be regular expressions.')
+      assert_equal current_path, '/groups/11/assign_rules'
+      assert_equal 'New Tech Company E', find('input#assign_rule_name').value
+      assert_equal '+', find('input#assign_rule_rule').value
+    end
+
     def test_continue_to_create_new_rule
       click_link('B Team')
       find('a#tab-rules').click
