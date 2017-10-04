@@ -27,6 +27,26 @@ module RedmineAutoAssignGroup
       assert page.find('a#tab-rules')
     end
 
+    def test_not_to_show_rules_tab_with_non_member
+      find('tr#group-12 td.name a').click
+
+      short_wait_time do
+        assert_raise Capybara::ElementNotFound do
+          find('a#tab-rules')
+        end
+      end
+    end
+
+    def test_not_to_show_rules_tab_with_anonymous
+      find('tr#group-13 td.name a').click
+
+      short_wait_time do
+        assert_raise Capybara::ElementNotFound do
+          find('a#tab-rules')
+        end
+      end
+    end
+
     def test_cannot_show_rules_tab_without_admin
       logout
       login_with_user

@@ -34,7 +34,8 @@ Usage
 2. Go to **Administration - Groups**.
 3. Select group which you want to add rules.
 4. Go to **Rules** tab.  
-   You can manage rule for assigning groups.
+   You can manage rule for assigning groups.  
+   NOTE: CANNOT create rules for builtin groups.
 
 After settings, this plugin automatically assigns groups for new user according to rules.
 

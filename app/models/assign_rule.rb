@@ -1,3 +1,5 @@
+class AssignRuleGroupBuiltinException < Exception; end
+
 class AssignRule < ActiveRecord::Base
   include Redmine::SafeAttributes
 
@@ -13,6 +15,15 @@ class AssignRule < ActiveRecord::Base
                   'name',
                   'rule',
                   'position'
+
+  def initialize(attributes = nil)
+    if not attributes.nil?
+      group = Group.find(attributes[:group_id])
+      raise AssignRuleGroupBuiltinException if group.builtin?
+    end
+
+    super
+  end
 
   def <=>(rule)
     position <=> rule.position

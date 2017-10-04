@@ -32,5 +32,17 @@ module RedmineAutoAssignGroup
       assert_equal ['must be regular expressions.'], rule.errors[:rule]
     end
 
+    def test_raise_error_with_groups_non_member
+      assert_raise AssignRuleGroupBuiltinException do
+        AssignRule.new(:group_id => 12, :name => 'Non member users', :rule => 'groups_non_member@example.com', :position => 1)
+      end
+    end
+
+    def test_raise_error_with_groups_anonymous
+      assert_raise AssignRuleGroupBuiltinException do
+        AssignRule.new(:group_id => 13, :name => 'Anonymous users', :rule => 'groups_anonymous@example.com', :position => 1)
+      end
+    end
+
   end
 end
