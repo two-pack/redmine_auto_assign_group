@@ -5,12 +5,12 @@ rvm:
   - 2.2
 env:
   - REDMINE_VERSION=master VERBOSE=yes
-  - REDMINE_VERSION=3.4.2 VERBOSE=yes
-  - REDMINE_VERSION=3.3.4 VERBOSE=yes
+  - REDMINE_VERSION=3.4.3 VERBOSE=yes
+  - REDMINE_VERSION=3.3.5 VERBOSE=yes
 matrix:
   exclude:
   - rvm: 2.4
-    env: REDMINE_VERSION=3.3.4 VERBOSE=yes
+    env: REDMINE_VERSION=3.3.5 VERBOSE=yes
 install:
   - true
 script:
