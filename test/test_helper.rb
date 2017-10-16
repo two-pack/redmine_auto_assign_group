@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
 
-require "capybara/rails"
-require "capybara/poltergeist"
+require 'capybara/rails'
+require 'capybara/poltergeist'
 
 module RedmineAutoAssignGroup
   module IntegrationTestHelper
@@ -12,22 +12,22 @@ module RedmineAutoAssignGroup
     Capybara.default_max_wait_time = 10
 
     def login(user, password)
-      visit "/login"
-      fill_in "username", with: user
-      fill_in "password", with: password
-      click_button("Login")
+      visit '/login'
+      fill_in 'username', with: user
+      fill_in 'password', with: password
+      click_button('Login')
       assert_equal 200, page.status_code
-      assert page.find("a.logout", :visible => :all)
+      assert page.find('a.logout', visible: :all)
     end
 
     def logout
-      click_link("Sign out")
+      click_link('Sign out')
       assert_equal 200, page.status_code
-      assert page.find("a.login", :visible => :all)
+      assert page.find('a.login', visible: :all)
     end
 
     def login_with_admin
-      login "admin", "admin"
+      login 'admin', 'admin'
     end
 
     def login_with_user
@@ -50,6 +50,5 @@ module RedmineAutoAssignGroup
     def finished_all_ajax_requests?
       page.evaluate_script('jQuery.active').zero?
     end
-
   end
 end

@@ -3,8 +3,7 @@ class AssignRulesController < ApplicationController
 
   before_action :require_admin
 
-  def index
-  end
+  def index; end
 
   def new
     @group = Group.find(params[:group_id])
@@ -21,18 +20,18 @@ class AssignRulesController < ApplicationController
     @rule.safe_attributes = permitted_params
     if @rule.save
       respond_to do |format|
-        format.html {
+        format.html do
           flash[:notice] = l(:notice_successful_update)
-          redirect_to edit_group_path(Group.find(params[:group_id]), :tab => :rules)
-        }
+          redirect_to edit_group_path(Group.find(params[:group_id]), tab: :rules)
+        end
         format.js { head 200 }
       end
     else
       respond_to do |format|
-        format.html {
+        format.html do
           @group = Group.find(@rule.group_id)
-          render :action => 'edit'
-        }
+          render action: 'edit'
+        end
         format.js { head 422 }
       end
     end
@@ -46,29 +45,28 @@ class AssignRulesController < ApplicationController
       group = Group.find(@rule.group_id)
       if params[:continue]
         redirect_to new_group_assign_rule_path(group)
-      elsif
-        redirect_to edit_group_path(group, :tab => :rules)
+      else
+        redirect_to edit_group_path(group, tab: :rules)
       end
     else
       @group = Group.find(@rule.group_id)
-      render :action => 'new'
+      render action: 'new'
     end
   end
 
   def destroy
     AssignRule.find(params[:id]).destroy
-    redirect_to edit_group_path(Group.find(params[:group_id]), :tab => :rules)
+    redirect_to edit_group_path(Group.find(params[:group_id]), tab: :rules)
   rescue
     flash[:error] = l(:error_raag_unable_delete_rule)
-    redirect_to edit_group_path(Group.find(params[:group_id]), :tab => :rules)
+    redirect_to edit_group_path(Group.find(params[:group_id]), tab: :rules)
   end
 
   private
 
   def permitted_params
     params.require(:assign_rule).permit(
-        :group_id, :name, :rule, :positon
+      :group_id, :name, :rule, :positon
     )
   end
-
 end

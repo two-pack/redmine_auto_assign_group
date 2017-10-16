@@ -7,7 +7,7 @@ module RedmineAutoAssignGroup
     include RedmineAutoAssignGroup::IntegrationTestHelper
 
     def setup
-      page.driver.headers = { "Accept-Language" => "en-US" }
+      page.driver.headers = { 'Accept-Language' => 'en-US' }
 
       login_with_admin
 
@@ -26,6 +26,5 @@ module RedmineAutoAssignGroup
         assert page.has_css?('span.url a', text: 'https://github.com/two-pack/redmine_auto_assign_group')
       end
     end
-
   end
 end

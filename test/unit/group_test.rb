@@ -5,13 +5,13 @@ module RedmineAutoAssignGroup
     fixtures :users
 
     ActiveRecord::FixtureSet.create_fixtures(
-        File.dirname(__FILE__) + '/../fixtures/', [:assign_rules])
+      File.dirname(__FILE__) + '/../fixtures/', [:assign_rules]
+    )
 
     def test_destroy_with_rules
       Group.find(11).destroy
 
-      assert_equal 0, AssignRule.where(:group_id => 11).count
+      assert_equal 0, AssignRule.where(group_id: 11).count
     end
-
   end
 end

@@ -5,11 +5,12 @@ module RedmineAutoAssignGroup
     fixtures :email_addresses
 
     ActiveRecord::FixtureSet.create_fixtures(
-        File.dirname(__FILE__) + '/../fixtures/', [:assign_rules, :users])
+      File.dirname(__FILE__) + '/../fixtures/', %i[assign_rules users]
+    )
 
     def test_compare_position
-      less  = AssignRule.new(:group_id => 11, :name => 'left',  :rule => '.*', :position => 1)
-      greater = AssignRule.new(:group_id => 11, :name => 'right', :rule => '.*', :position => 2)
+      less = AssignRule.new(group_id: 11, name: 'left', rule: '.*', position: 1)
+      greater = AssignRule.new(group_id: 11, name: 'right', rule: '.*', position: 2)
 
       assert_equal -1, less <=> greater
       assert_equal 0, less <=> less
@@ -17,7 +18,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_match_group_by_user
-      groups = AssignRule.match_groups(User.find(1))   # admin@somenet.foo
+      groups = AssignRule.match_groups(User.find(1)) # admin@somenet.foo
 
       assert_equal 2, groups.count
       assert_equal 11, groups[0].id   # B Team
@@ -25,7 +26,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_raise_error_with_invalid_regexp
-      rule = AssignRule.new(:group_id => 11, :name => 'invalid rule', :rule => '*', :position => 1)
+      rule = AssignRule.new(group_id: 11, name: 'invalid rule', rule: '*', position: 1)
 
       rule.rule_needs_to_be_regexp
 
@@ -34,15 +35,14 @@ module RedmineAutoAssignGroup
 
     def test_raise_error_with_groups_non_member
       assert_raise AssignRuleGroupBuiltinException do
-        AssignRule.new(:group_id => 12, :name => 'Non member users', :rule => 'groups_non_member@example.com', :position => 1)
+        AssignRule.new(group_id: 12, name: 'Non member users', rule: 'groups_non_member@example.com', position: 1)
       end
     end
 
     def test_raise_error_with_groups_anonymous
       assert_raise AssignRuleGroupBuiltinException do
-        AssignRule.new(:group_id => 13, :name => 'Anonymous users', :rule => 'groups_anonymous@example.com', :position => 1)
+        AssignRule.new(group_id: 13, name: 'Anonymous users', rule: 'groups_anonymous@example.com', position: 1)
       end
     end
-
   end
 end

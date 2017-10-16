@@ -1,4 +1,4 @@
-class AssignRuleGroupBuiltinException < Exception; end
+class AssignRuleGroupBuiltinException < RuntimeError; end
 
 class AssignRule < ActiveRecord::Base
   include Redmine::SafeAttributes
@@ -9,7 +9,7 @@ class AssignRule < ActiveRecord::Base
 
   validate :rule_needs_to_be_regexp
 
-  scope :sorted, lambda { order(:position) }
+  scope :sorted, -> { order(:position) }
 
   safe_attributes 'group_id',
                   'name',
@@ -17,7 +17,7 @@ class AssignRule < ActiveRecord::Base
                   'position'
 
   def initialize(attributes = nil)
-    if not attributes.nil?
+    unless attributes.nil?
       group = Group.find(attributes[:group_id])
       raise AssignRuleGroupBuiltinException if group.builtin?
     end
@@ -35,11 +35,8 @@ class AssignRule < ActiveRecord::Base
   end
 
   def rule_needs_to_be_regexp
-    begin
-      Regexp.compile(rule)
-    rescue RegexpError => e
-      errors.add(:rule, :error_raag_rule_must_be_regexp)
-    end
+    Regexp.compile(rule)
+  rescue RegexpError
+    errors.add(:rule, :error_raag_rule_must_be_regexp)
   end
-
 end

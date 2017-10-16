@@ -5,7 +5,8 @@ module RedmineAutoAssignGroup
     fixtures :users, :groups_users
 
     ActiveRecord::FixtureSet.create_fixtures(
-        File.dirname(__FILE__) + '/../fixtures/', [:assign_rules])
+      File.dirname(__FILE__) + '/../fixtures/', [:assign_rules]
+    )
 
     include RedmineAutoAssignGroup::IntegrationTestHelper
 
@@ -179,6 +180,5 @@ module RedmineAutoAssignGroup
         end
       end
     end
-
   end
 end

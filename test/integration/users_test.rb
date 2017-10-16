@@ -5,7 +5,8 @@ module RedmineAutoAssignGroup
     fixtures :users, :groups_users
 
     ActiveRecord::FixtureSet.create_fixtures(
-        File.dirname(__FILE__) + '/../fixtures/', [:assign_rules])
+      File.dirname(__FILE__) + '/../fixtures/', [:assign_rules]
+    )
 
     include RedmineAutoAssignGroup::IntegrationTestHelper
 
@@ -57,6 +58,5 @@ module RedmineAutoAssignGroup
       assert_not find('div#tab-content-groups').find('label', text: 'A Team').find('input').checked?
       assert_not find('div#tab-content-groups').find('label', text: 'B Team').find('input').checked?
     end
-
   end
 end

@@ -5,8 +5,8 @@ module RedmineAutoAssignGroup
   module GroupsHelperPatch
     def group_settings_tabs(group)
       tabs = super
-      if not group.builtin?
-        tabs << {:name => 'rules', :partial => 'groups/rules', :label => :label_raag_rules}
+      unless group.builtin?
+        tabs << { name: 'rules', partial: 'groups/rules', label: :label_raag_rules }
       end
       tabs
     end
