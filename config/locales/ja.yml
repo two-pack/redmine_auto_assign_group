@@ -6,7 +6,6 @@ ja:
   field_rule: "ルール"
   note_rule_is_regexp: "正規表現で設定してください。"
   error_raag_unable_delete_rule: "ルールを削除できませんでした。"
-  error_raag_unable_update_rule: "ルールを編集できませんでした。"
   errors:
     messages:
       error_raag_rule_must_be_regexp: "には正規表現を設定してください。"

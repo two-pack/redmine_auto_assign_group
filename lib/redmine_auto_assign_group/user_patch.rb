@@ -1,6 +1,3 @@
-require_dependency 'user'
-require_dependency 'assign_rule'
-
 module RedmineAutoAssignGroup
   module UserPatch
     def save(*args, &block)

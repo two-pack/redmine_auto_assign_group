@@ -6,7 +6,6 @@ en:
   field_rule: "Rule"
   note_rule_is_regexp: "Note: You can specify regular expression."
   error_raag_unable_delete_rule: "Unable to delete rule"
-  error_raag_unable_update_rule: "Unable to update rule"
   errors:
     messages:
       error_raag_rule_must_be_regexp: "must be regular expressions."

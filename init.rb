@@ -20,15 +20,14 @@ Redmine::Plugin.register :redmine_auto_assign_group do
   requires_redmine version_or_higher: '3.3'
 end
 
-require_dependency 'redmine_auto_assign_group/groups_helper_patch'
-
 ActiveRecord::CompatibleLegacyMigration.configure do |config|
   config.default_version = 4.2
 end
 
 Rails.configuration.to_prepare do
-  require_dependency 'user'
-  require_dependency 'group'
+  unless GroupsHelper.included_modules.include?(RedmineAutoAssignGroup::GroupsHelperPatch)
+    GroupsHelper.send(:prepend, RedmineAutoAssignGroup::GroupsHelperPatch)
+  end
 
   unless User.included_modules.include? RedmineAutoAssignGroup::UserPatch
     User.send(:prepend, RedmineAutoAssignGroup::UserPatch)
