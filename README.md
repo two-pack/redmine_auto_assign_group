@@ -44,7 +44,7 @@ See [Wiki](https://github.com/two-pack/redmine_auto_assign_group/wiki/Usage) for
 License
 =======
 
-This plugin is released under the GPL v2 license. See LICENSE.txt for more information.
+This plugin is released under the GPL v2 license. See [LICENSE](/LICENSE) for more information.
 
 Copyright
 =========
