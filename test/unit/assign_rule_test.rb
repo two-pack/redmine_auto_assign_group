@@ -25,6 +25,20 @@ module RedmineAutoAssignGroup
       assert_equal 14, groups[1].id   # C Team
     end
 
+    def test_raise_error_whwn_name_is_empty
+      rule = AssignRule.new(group_id: 11, name: '', rule: '.+@example.com', position: 1)
+
+      assert !rule.save
+      assert_equal ['cannot be blank'], rule.errors[:name]
+    end
+
+    def test_raise_error_whwn_rule_is_empty
+      rule = AssignRule.new(group_id: 11, name: 'foo', rule: '', position: 1)
+
+      assert !rule.save
+      assert_equal ['cannot be blank'], rule.errors[:rule]
+    end
+
     def test_raise_error_with_invalid_regexp
       rule = AssignRule.new(group_id: 11, name: 'invalid rule', rule: '*', position: 1)
 

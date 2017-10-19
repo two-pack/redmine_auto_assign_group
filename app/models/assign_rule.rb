@@ -7,6 +7,7 @@ class AssignRule < ActiveRecord::Base
 
   belongs_to :group
 
+  validates_presence_of :name, :rule
   validate :rule_needs_to_be_regexp
 
   scope :sorted, -> { order(:position) }
