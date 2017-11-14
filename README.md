@@ -6,7 +6,7 @@ This is Redmine plugin which assigns group automatically when create new users.
 
 Project Health
 ==============
-[![Build Status](https://travis-ci.org/two-pack/redmine_auto_assign_group.svg?branch=master)](https://travis-ci.org/two-pack/redmine_auto_assign_group) [![Code Climate](https://codeclimate.com/github/two-pack/redmine_auto_assign_group.png)](https://codeclimate.com/github/two-pack/redmine_auto_assign_group)
+[![Build Status](https://travis-ci.org/two-pack/redmine_auto_assign_group.svg?branch=master)](https://travis-ci.org/two-pack/redmine_auto_assign_group) [![Code Climate](https://codeclimate.com/github/two-pack/redmine_auto_assign_group.png)](https://codeclimate.com/github/two-pack/redmine_auto_assign_group) [![Stars](https://img.shields.io/redmine/plugin/stars/redmine_auto_assign_group.svg)](https://www.redmine.org/plugins/redmine_auto_assign_group)
 
 Requirements
 ============
