@@ -7,6 +7,7 @@ module RedmineAutoAssignGroup
   module IntegrationTestHelper
     include Capybara::DSL
 
+    Capybara.server = :webrick
     Capybara.default_driver = :poltergeist
     Capybara.javascript_driver = :poltergeist
     Capybara.default_max_wait_time = 10
