@@ -9,7 +9,7 @@ env:
 matrix:
   exclude:
   - rvm: 2.4
-    env: REDMINE_VERSION=3.3.7 VERBOSE=yes
+    env: REDMINE_VERSION=3.3.8 VERBOSE=yes
 install:
   - true
 script:
