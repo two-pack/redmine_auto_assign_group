@@ -4,6 +4,7 @@ rvm:
   - 2.3
   - 2.2
 env:
+  - REDMINE_VERSION=master VERBOSE=yes
   - REDMINE_VERSION=3.4.6 VERBOSE=yes
   - REDMINE_VERSION=3.3.8 VERBOSE=yes
 matrix:
