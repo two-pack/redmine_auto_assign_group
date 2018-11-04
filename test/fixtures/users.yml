@@ -173,4 +173,13 @@ groups_014:
   lastname: C Team
   type: Group
   status: 1
-
+groups_015:
+  id: 15
+  lastname: D Team
+  type: Group
+  status: 1
+groups_016:
+  id: 16
+  lastname: Empty Group
+  type: Group
+  status: 1

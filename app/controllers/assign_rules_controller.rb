@@ -66,7 +66,7 @@ class AssignRulesController < ApplicationController
 
   def permitted_params
     params.require(:assign_rule).permit(
-      :group_id, :name, :rule, :positon
+      :group_id, :name, :mail, :firstname, :lastname, :positon
     )
   end
 end

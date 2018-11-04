@@ -2,7 +2,9 @@
 
 <div class="box tabular">
   <p><%= f.text_field :name, :required => true, :size => 60 %></p>
-  <p><%= f.text_field :rule, :required => true, :size => 60 %>
-     <em class="info"><%= l(:note_rule_is_regexp) %></em></p>
+  <p><%= f.text_field :mail, :size => 60 %></p>
+  <p><%= f.text_field :firstname, :size => 60 %></p>
+  <p><%= f.text_field :lastname, :size => 60 %></p>
+  <p><em class="info"><%= l(:note_rule_is_regexp) %></em></p>
   <%= f.hidden_field :group_id, :value => @group.id %>
 </div>

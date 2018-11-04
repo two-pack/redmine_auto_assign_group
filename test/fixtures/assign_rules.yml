@@ -3,41 +3,87 @@ assign_rules_001:
   id: 1
   group_id: 11
   name: 'ABC Example'
-  rule: '.+@abc.example.com'
+  mail: '.+@abc.example.com'
+  firstname: ''
+  lastname: ''
   position: 1
 assign_rules_002:
   id: 2
   group_id: 11
   name: 'XYZ Corp'
-  rule: '.+@xyz.corp.co.jp'
+  mail: '.+@xyz.corp.co.jp'
+  firstname: 'Tatsuya'
+  lastname: ''
   position: 2
 assign_rules_003:
   id: 3
   group_id: 11
   name: 'PQR Inc.'
-  rule: '.+@pqr.net'
+  mail: '.+@pqr.net'
+  firstname: ''
+  lastname: 'Saito'
   position: 3
 assign_rules_004:
   id: 4
   group_id: 11
   name: 'For edit test'
-  rule: '.+@for.edit.test.net'
+  mail: '.+@for.edit.test.net'
+  firstname: ''
+  lastname: ''
   position: 4
 assign_rules_005:
   id: 5
   group_id: 11
   name: 'For delete test'
-  rule: '.+@for.delete.test.net'
+  mail: '.+@for.delete.test.net'
+  firstname: ''
+  lastname: ''
   position: 5
 assign_rules_006:
   id: 6
   group_id: 11
   name: 'somenet.foo'
-  rule: '.+@somenet.foo'
+  mail: '.+@somenet.foo'
+  firstname: ''
+  lastname: ''
   position: 6
 assign_rules_007:
   id: 7
   group_id: 14
   name: 'admin@somenet.foo'
-  rule: 'admin@somenet.foo'
+  mail: 'admin@somenet.foo'
+  firstname: ''
+  lastname: ''
   position: 7
+assign_rules_008:
+  id: 8
+  group_id: 14
+  name: 'First name matching'
+  mail: ''
+  firstname: 'Ta.+'
+  lastname: ''
+  position: 8
+assign_rules_009:
+  id: 9
+  group_id: 10
+  name: 'Last name matching'
+  mail: ''
+  firstname: ''
+  lastname: '.+ito'
+  position: 9
+assign_rules_010:
+  id: 10
+  group_id: 15
+  name: 'All matching'
+  mail: '.+@zzz.example.com'
+  firstname: 'Kaka'
+  lastname: '.+matsu'
+  position: 10
+assign_rules_011:
+  id: 11
+  group_id: 15
+  name: 'First name matching'
+  mail: ''
+  firstname: 'John'
+  lastname: ''
+  position: 11

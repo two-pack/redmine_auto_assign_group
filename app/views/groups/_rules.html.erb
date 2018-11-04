@@ -10,14 +10,18 @@
     <thead>
       <tr>
         <th><%= l(:label_raag_rule_name) %></th>
-        <th><%= l(:label_raag_rule_regexp) %></th>
+        <th><%= l(:field_mail) %></th>
+        <th><%= l(:field_firstname) %></th>
+        <th><%= l(:field_lastname) %></th>
         <th></th>
       </tr>
     </thead>
     <% @rules.each do |rule| %>
         <tr id="rule-<%= rule.id %>">
           <td class="name"><%= link_to rule.name, edit_group_assign_rule_path(@group, :id => rule.id) %></td>
-          <td class="rule"><%= rule.rule %></td>
+          <td class="rule-mail"><%= rule.mail %></td>
+          <td class="rule-firstname"><%= rule.firstname %></td>
+          <td class="rule-lastname"><%= rule.lastname %></td>
           <td class="buttons">
             <%= reorder_handle(rule, :url => group_assign_rule_path(@group, :id => rule.id), :param => 'assign_rule') %>
             <%= delete_link group_assign_rule_path(@group, :id => rule.id) %>

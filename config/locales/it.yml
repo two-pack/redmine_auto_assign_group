@@ -2,10 +2,9 @@ it:
   label_raag_rules: "Regole"
   label_raag_new_rule: "Nuova regola"
   label_raag_rule_name: "Nome"
-  label_raag_rule_regexp: "Regola"
-  field_rule: "Regola"
   note_rule_is_regexp: "Nota: si può utilizzare una regular expression."
   error_raag_unable_delete_rule: "Impossibile eliminare la regola"
   errors:
     messages:
       error_raag_rule_must_be_regexp: "deve essere una regular expressions."
+      error_raag_rule_must_be_entered_at_least_one: "Si prega di inserire almeno una regola."
