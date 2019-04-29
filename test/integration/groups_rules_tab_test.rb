@@ -132,7 +132,7 @@ module RedmineAutoAssignGroup
 
       fill_in 'Name', with: 'New Tech Company B'
       fill_in 'Email', with: '.+@b.new-tech.com'
-      click_button('Create and continue')
+      find('input[name="continue"]').click
 
       assert find('div#flash_notice', text: 'Successful creation.')
       assert_equal '/groups/11/assign_rules/new', current_path
