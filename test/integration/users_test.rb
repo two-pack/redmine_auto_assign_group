@@ -52,8 +52,6 @@ module RedmineAutoAssignGroup
     end
 
     def setup
-      page.driver.headers = { 'Accept-Language' => 'en-US' }
-
       login_with_admin
 
       @created_user_login = ''
@@ -181,7 +179,7 @@ module RedmineAutoAssignGroup
 
       click_link('jsmith')
       fill_in 'First name', with: 'James'
-      click_button('Save')
+      find('#edit_user_2 > p > input[type=submit]').click
 
       open_groups_tab
 

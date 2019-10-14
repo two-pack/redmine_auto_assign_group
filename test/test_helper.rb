@@ -1,30 +1,54 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
 
 require 'capybara/rails'
-require 'capybara/poltergeist'
+require 'selenium-webdriver'
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+      chromeOptions: { args: %w[headless disable-gpu window-size=1280,800] }
+  )
+
+  if Redmine::VERSION::MAJOR >= 4
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_option('w3c', false)
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    options.add_argument('window-size=1280,800')
+    Capybara::Selenium::Driver.new(
+        app,
+        browser: :chrome,
+        desired_capabilities: capabilities,
+        options: options
+    )
+  else
+    Capybara::Selenium::Driver.new(
+        app,
+        browser: :chrome,
+        desired_capabilities: capabilities,
+        switches: %w[--headless --disable-gpu window-size=1280,800]
+    )
+  end
+end
+
+Capybara.javascript_driver = :headless_chrome
+Capybara.current_driver = :headless_chrome
+Capybara.default_max_wait_time = 10
 
 module RedmineAutoAssignGroup
   module IntegrationTestHelper
     include Capybara::DSL
 
-    Capybara.server = :webrick
-    Capybara.default_driver = :poltergeist
-    Capybara.javascript_driver = :poltergeist
-    Capybara.default_max_wait_time = 10
-
     def login(user, password)
       visit '/login'
       fill_in 'username', with: user
       fill_in 'password', with: password
-      click_button('Login')
-      assert_equal 200, page.status_code
-      assert page.find('a.logout', visible: :all)
+      find('input#login-submit').click
+      assert find('a.logout', visible: :all)
     end
 
     def logout
-      click_link('Sign out')
-      assert_equal 200, page.status_code
-      assert page.find('a.login', visible: :all)
+      find('a.logout').click
+      assert find('a.login', visible: :all)
     end
 
     def login_with_admin

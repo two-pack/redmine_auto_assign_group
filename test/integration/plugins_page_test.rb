@@ -7,8 +7,6 @@ module RedmineAutoAssignGroup
     include RedmineAutoAssignGroup::IntegrationTestHelper
 
     def setup
-      page.driver.headers = { 'Accept-Language' => 'en-US' }
-
       login_with_admin
 
       visit '/admin/plugins'

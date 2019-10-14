@@ -10,16 +10,15 @@ module RedmineAutoAssignGroup
 
     include RedmineAutoAssignGroup::IntegrationTestHelper
 
-    def open_rules_tab(name)
+    def open_rules_tab(group_number)
       Retryable.retryable(tries: 10) do
-        click_link(name)
+        visit '/groups/' + group_number.to_s + '/edit'
+        assert_not_nil page
         find('a#tab-rules').click
       end
     end
 
     def setup
-      page.driver.headers = { 'Accept-Language' => 'en-US' }
-
       login_with_admin
 
       visit '/groups'
@@ -60,17 +59,17 @@ module RedmineAutoAssignGroup
       login_with_user
 
       visit 'groups/10/edit?tab=rules'
-      assert_equal 403, page.status_code
+      assert find('#content > h2', text: '403')
     end
 
     def test_do_not_show_rules_when_no_rules
-      open_rules_tab('Empty Group')
+      open_rules_tab(16)  # Empty Group
 
       assert find('p.nodata', text: 'No data to display')
     end
 
     def test_show_rules
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
 
       within(:css, 'tr#rule-1') do
         assert find('td.name', text: 'ABC Example')
@@ -95,7 +94,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_create_new_rule
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
       click_link('New rule')
 
       fill_in 'Name', with: 'New Tech Company A'
@@ -113,7 +112,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_fail_to_create_new_rule_with_invalid_regexp
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
       click_link('New rule')
 
       fill_in 'Name', with: 'New Tech Company E'
@@ -127,7 +126,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_continue_to_create_new_rule
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
       click_link('New rule')
 
       fill_in 'Name', with: 'New Tech Company B'
@@ -149,7 +148,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_edit_rule
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
       click_link('For edit test')
 
       fill_in 'Name', with: 'After edit name'
@@ -163,7 +162,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_fail_to_edit_rule_with_invalid_regexp
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
       click_link('ABC Example')
 
       fill_in 'Email', with: '*'
@@ -176,7 +175,7 @@ module RedmineAutoAssignGroup
     end
 
     def test_delete_rule
-      open_rules_tab('B Team')
+      open_rules_tab(11)  # B Team
 
       within(:css, 'tr#rule-5') do
         click_link('Delete')
