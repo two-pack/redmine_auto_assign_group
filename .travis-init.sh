@@ -25,11 +25,11 @@ case $REDMINE_VERSION in
           export MIGRATE_PLUGINS=redmine:plugins:migrate
           export REDMINE_TARBALL=https://github.com/redmine/redmine/archive/$REDMINE_VERSION.tar.gz
           ;;
-  master) export PATH_TO_PLUGINS=./plugins
+  master | 2.*-stable | 3.*-stable | 4.*-stable) export PATH_TO_PLUGINS=./plugins
           export GENERATE_SECRET=generate_secret_token
           export MIGRATE_PLUGINS=redmine:plugins:migrate
           export REDMINE_GIT_REPO=https://github.com/redmine/redmine.git
-          export REDMINE_GIT_TAG=master
+          export REDMINE_GIT_TAG=$REDMINE_VERSION
           ;;
   *)      echo "Unsupported platform $REDMINE_VERSION"
           exit 1

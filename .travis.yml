@@ -11,18 +11,12 @@ rvm:
   - 2.2
 env:
   - REDMINE_VERSION=master VERBOSE=yes
-  - REDMINE_VERSION=4.0.3 VERBOSE=yes
-  - REDMINE_VERSION=3.4.10 VERBOSE=yes
-  - REDMINE_VERSION=3.3.9 VERBOSE=yes
+  - REDMINE_VERSION=4.0-stable VERBOSE=yes
+  - REDMINE_VERSION=3.4-stable VERBOSE=yes
 matrix:
   exclude:
   - rvm: 2.5
-    env: REDMINE_VERSION=3.4.10 VERBOSE=yes
-    env: REDMINE_VERSION=3.3.9 VERBOSE=yes
-  - rvm: 2.4
-    env: REDMINE_VERSION=3.3.9 VERBOSE=yes
-  - rvm: 2.3
-    env: REDMINE_VERSION=3.3.9 VERBOSE=yes
+    env: REDMINE_VERSION=3.4-stable VERBOSE=yes
   - rvm: 2.2
     env: REDMINE_VERSION=master VERBOSE=yes
 install:
