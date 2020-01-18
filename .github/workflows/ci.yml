@@ -16,6 +16,7 @@ jobs:
           - v4.1
           - trunk
         ruby:
+          - v2.3
           - v2.4
           - v2.5
           - v2.6
