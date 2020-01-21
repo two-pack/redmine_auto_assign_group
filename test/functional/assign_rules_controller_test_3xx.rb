@@ -1,10 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class AssignRulesControllerTest < ActionController::TestCase
+  fixtures :groups_users
   ActiveRecord::FixtureSet.create_fixtures(
       File.dirname(__FILE__) + '/../fixtures/', [:users, :assign_rules]
   )
-  fixtures :groups_users
 
   def setup
     User.current = nil

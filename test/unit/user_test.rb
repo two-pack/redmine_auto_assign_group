@@ -2,10 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 module RedmineAutoAssignGroup
   class UserTest < ActiveSupport::TestCase
+    fixtures :groups_users
     ActiveRecord::FixtureSet.create_fixtures(
         File.dirname(__FILE__) + '/../fixtures/', [:users, :assign_rules]
     )
-    fixtures :groups_users
 
     def test_create_with_rule
       user = User.new(firstname: 'user1', lastname: 'test',
