@@ -2,11 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../../test_helper')
 
 module RedmineAutoAssignGroup
   class Redmine::ApiTest::UsersTest < Redmine::ApiTest::Base
-    fixtures :users, :email_addresses, :members, :member_roles, :roles, :projects,
+    fixtures :email_addresses, :members, :member_roles, :roles, :projects,
              :groups_users
-
     ActiveRecord::FixtureSet.create_fixtures(
-      File.dirname(__FILE__) + '/../../fixtures/', [:assign_rules]
+      File.dirname(__FILE__) + '/../../fixtures/', [:users, :assign_rules]
     )
 
     test 'POST /users.xml with valid parameters should automatically assign group for new user' do

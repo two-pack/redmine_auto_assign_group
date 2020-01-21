@@ -2,7 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 module RedmineAutoAssignGroup
   class PluginsPageTest < Redmine::IntegrationTest
-    fixtures :users
+    ActiveRecord::FixtureSet.create_fixtures(
+      File.dirname(__FILE__) + '/../fixtures/', [:users]
+    )
 
     include RedmineAutoAssignGroup::IntegrationTestHelper
 

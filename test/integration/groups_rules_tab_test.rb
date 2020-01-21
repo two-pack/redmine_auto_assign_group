@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 module RedmineAutoAssignGroup
   class GroupsRulesTabTest < Redmine::IntegrationTest
     fixtures :email_addresses, :groups_users
-
     ActiveRecord::FixtureSet.create_fixtures(
       File.dirname(__FILE__) + '/../fixtures/', [:assign_rules, :users]
     )
