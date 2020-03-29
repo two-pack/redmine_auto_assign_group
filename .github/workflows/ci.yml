@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Redmine plugin test
-        uses: two-pack/redmine-plugin-test-action@v2
+        uses: two-pack/redmine-plugin-test-action@add_db_option
         with:
           plugin_name: redmine_auto_assign_group
           redmine_version: ${{ matrix.redmine }}
