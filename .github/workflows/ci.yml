@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 20 * * *' # JST 5:00 test3
+    - cron: '0 20 * * *' # JST 5:00
 
 jobs:
   test:
@@ -11,13 +11,24 @@ jobs:
     strategy:
       matrix:
         redmine:
-          - v4.1.0
+          - v3.4
+          - v4.0
+          - v4.1
+          - trunk
         ruby:
+          - v2.3
+          - v2.4
+          - v2.5
           - v2.6
         database:
           - postgresql
           - mysql
           - sqlite3
+        exclude:
+          - redmine: v3.4
+            ruby: v2.5
+          - redmine: v3.4
+            ruby: v2.6
 
     steps:
       - name: Redmine plugin test
