@@ -14,6 +14,9 @@ jobs:
           - v4.1.0
         ruby:
           - v2.6
+        database:
+          - postgresql
+          - sqlite3
 
     steps:
       - name: Redmine plugin test
@@ -22,3 +25,4 @@ jobs:
           plugin_name: redmine_auto_assign_group
           redmine_version: ${{ matrix.redmine }}
           ruby_version: ${{ matrix.ruby }}
+          database: ${{ matrix.database }}
