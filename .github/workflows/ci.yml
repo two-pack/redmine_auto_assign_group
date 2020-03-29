@@ -20,6 +20,10 @@ jobs:
           - v2.4
           - v2.5
           - v2.6
+        database:
+          - postgresql
+          - mysql
+          - sqlite3
         exclude:
           - redmine: v3.4
             ruby: v2.5
@@ -33,3 +37,4 @@ jobs:
           plugin_name: redmine_auto_assign_group
           redmine_version: ${{ matrix.redmine }}
           ruby_version: ${{ matrix.ruby }}
+          database: ${{ matrix.database }}
