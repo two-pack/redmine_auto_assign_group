@@ -16,6 +16,7 @@ jobs:
           - v2.6
         database:
           - postgresql
+          - mysql
           - sqlite3
 
     steps:
