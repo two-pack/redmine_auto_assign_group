@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 20 * * *' # JST 5:00
+    - cron: '0 20 * * *' # JST 5:00 -
 
 jobs:
   test:
