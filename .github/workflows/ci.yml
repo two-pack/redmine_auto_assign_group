@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Redmine plugin test
-        uses: two-pack/redmine-plugin-test-action@v2
+        uses: two-pack/redmine-plugin-test-action@check_start_postgresql
         with:
           plugin_name: redmine_auto_assign_group
           redmine_version: ${{ matrix.redmine }}
