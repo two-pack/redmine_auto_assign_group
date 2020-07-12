@@ -70,5 +70,9 @@ module RedmineAutoAssignGroup
     def finished_all_ajax_requests?
       page.evaluate_script('jQuery.active').zero?
     end
+
+    def assert_visit
+      assert has_selector?("div#content")
+    end
   end
 end
