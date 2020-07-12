@@ -19,7 +19,7 @@ module RedmineAutoAssignGroup
 
     def create_user_and_display_groups_tab(firstname, lastname, email)
       visit '/users'
-      assert_not_nil page
+      assert_visit
 
       click_link('New user')
       fill_in 'Login', with: @created_user_login
@@ -35,7 +35,7 @@ module RedmineAutoAssignGroup
 
     def delete_user
       visit '/users'
-      assert_not_nil page
+      assert_visit
       click_link(@created_user_login)
       page.accept_confirm 'Are you sure?' do
         click_link('Delete')
@@ -174,7 +174,7 @@ module RedmineAutoAssignGroup
 
     def test_do_not_assign_group_when_user_is_editted
       visit '/users'
-      assert_not_nil page
+      assert_visit
 
       click_link('jsmith')
       fill_in 'First name', with: 'James'

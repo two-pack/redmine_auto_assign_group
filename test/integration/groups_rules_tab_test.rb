@@ -12,7 +12,7 @@ module RedmineAutoAssignGroup
     def open_rules_tab(group_number)
       Retryable.retryable(tries: 10) do
         visit '/groups/' + group_number.to_s + '/edit'
-        assert_not_nil page
+        assert_visit
         find('a#tab-rules').click
       end
     end
@@ -21,7 +21,7 @@ module RedmineAutoAssignGroup
       login_with_admin
 
       visit '/groups'
-      assert_not_nil page
+      assert_visit
     end
 
     def teardown
