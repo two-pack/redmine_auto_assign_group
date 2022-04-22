@@ -24,7 +24,7 @@ ActiveRecord::CompatibleLegacyMigration.configure do |config|
   config.default_version = 4.2
 end
 
-Rails.configuration.to_prepare do
+if Rails.version > '6.0' && Rails.autoloaders.zeitwerk_enabled?
   unless GroupsHelper.included_modules.include?(RedmineAutoAssignGroup::GroupsHelperPatch)
     GroupsHelper.send(:prepend, RedmineAutoAssignGroup::GroupsHelperPatch)
   end
@@ -35,5 +35,19 @@ Rails.configuration.to_prepare do
 
   unless Group.included_modules.include? RedmineAutoAssignGroup::GroupPatch
     Group.send(:prepend, RedmineAutoAssignGroup::GroupPatch)
+  end
+else
+  Rails.configuration.to_prepare do
+    unless GroupsHelper.included_modules.include?(RedmineAutoAssignGroup::GroupsHelperPatch)
+      GroupsHelper.send(:prepend, RedmineAutoAssignGroup::GroupsHelperPatch)
+    end
+
+    unless User.included_modules.include? RedmineAutoAssignGroup::UserPatch
+      User.send(:prepend, RedmineAutoAssignGroup::UserPatch)
+    end
+
+    unless Group.included_modules.include? RedmineAutoAssignGroup::GroupPatch
+      Group.send(:prepend, RedmineAutoAssignGroup::GroupPatch)
+    end
   end
 end
