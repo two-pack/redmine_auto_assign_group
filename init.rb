@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_auto_assign_group do
   name 'Redmine Auto Assign Group Plugin'
   author 'Tatsuya Saito'
   description 'This plugin automatically assigns group when user is added.'
-  version '0.1.1'
+  version '0.1.2'
   url 'https://github.com/two-pack/redmine_auto_assign_group'
   author_url 'mailto:twopackas@gmail.com'
   requires_redmine version_or_higher: '3.3'
