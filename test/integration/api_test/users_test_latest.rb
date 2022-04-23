@@ -8,6 +8,8 @@ module RedmineAutoAssignGroup
       File.dirname(__FILE__) + '/../../fixtures/', [:users, :assign_rules]
     )
 
+    content_type_charset = (Redmine::VERSION::MAJOR >= 5) ? "; charset=utf-8" : ""
+
     test 'POST /users.xml with valid parameters should automatically assign group for new user' do
       assert_difference('User.count') do
         post '/users.xml',
@@ -53,8 +55,8 @@ module RedmineAutoAssignGroup
              headers: credentials('admin')
       end
 
-      assert_response :unprocessable_entity
-      assert_equal 'application/xml', @response.content_type
+      assert_response :unprocessable_entity      
+      assert_equal 'application/xml' + content_type_charset, @response.content_type
       assert_select 'errors error', text: 'First name cannot be blank'
     end
 
@@ -70,7 +72,7 @@ module RedmineAutoAssignGroup
       end
 
       assert_response :unprocessable_entity
-      assert_equal 'application/json', @response.content_type
+      assert_equal 'application/json' + content_type_charset, @response.content_type
       json = ActiveSupport::JSON.decode(response.body)
       assert_kind_of Hash, json
       assert json.key?('errors')
