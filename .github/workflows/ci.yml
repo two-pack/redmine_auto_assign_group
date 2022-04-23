@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 20 * * *' # JST 5:00
+    - cron: "0 20 * * *" # JST 5:00
 
 jobs:
   test:
@@ -11,14 +11,15 @@ jobs:
     strategy:
       matrix:
         redmine:
-          - v4.0
           - v4.1
+          - v4.2
+          - v5.0
           - trunk
         ruby:
-          - v2.3
-          - v2.4
-          - v2.5
           - v2.6
+          - v2.7
+          - v3.0
+          - v3.1
         database:
           - postgresql
           - mysql
