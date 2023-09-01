@@ -1,6 +1,6 @@
 module RedmineAutoAssignGroup
   module UserPatch
-    def save(*args, &block)
+    def save(**options, &block)
       return super unless new_record?
 
       new_user = super
