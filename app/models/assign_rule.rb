@@ -1,6 +1,6 @@
 class AssignRuleGroupBuiltinException < RuntimeError; end
 
-class AssignRule < ActiveRecord::Base
+class AssignRule < (defined?(ApplicationRecord) == 'constant' ? ApplicationRecord : ActiveRecord::Base)
   include Redmine::SafeAttributes
 
   acts_as_positioned
