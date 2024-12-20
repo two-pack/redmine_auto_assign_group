@@ -3,16 +3,11 @@ Redmine Auto Assign Group Plugin
 
 This is Redmine plugin which assigns group automatically when create new users.
 
-
-Project Health
-==============
-[![CI Status](https://github.com/two-pack/redmine_auto_assign_group/workflows/CI/badge.svg)](https://github.com/two-pack/redmine_auto_assign_group/actions) [![Code Climate](https://codeclimate.com/github/two-pack/redmine_auto_assign_group.png)](https://codeclimate.com/github/two-pack/redmine_auto_assign_group) [![Stars](https://img.shields.io/redmine/plugin/stars/redmine_auto_assign_group.svg)](https://www.redmine.org/plugins/redmine_auto_assign_group)
-
 Requirements
 ============
 
-* Redmine 3.3.x or higher.
-* Ruby 2.x
+* Redmine (supported versions. see [here](https://www.redmine.org/projects/redmine/wiki/Download))
+* Ruby for Redmine (see [here](https://www.redmine.org/projects/redmine/wiki/RedmineInstall))
 
 Installation
 ============
